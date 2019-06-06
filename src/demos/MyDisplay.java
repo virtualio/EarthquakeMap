@@ -9,7 +9,6 @@ import processing.core.PApplet;
  * @author UC San Diego Intermediate Software Development MOOC team
  * @author Star Dust
  * Date: May 17, 2019
- *
  */
 public class MyDisplay extends PApplet {
 

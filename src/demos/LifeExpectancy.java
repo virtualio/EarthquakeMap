@@ -19,6 +19,9 @@ import processing.core.PApplet;
  * the population density values from another CSV file (provided by the World
  * Bank). The data value is encoded to transparency via a simplistic linear
  * mapping.
+ * @author Star Dust
+ * Date: May 17, 2019
+ * 
  */
 public class LifeExpectancy extends PApplet {
 
@@ -37,8 +40,9 @@ public class LifeExpectancy extends PApplet {
 		println("Loaded " + lifeExpByCountry.size() + " data entries");
 
 		// Load country polygons and adds them as markers
-		countries = GeoJSONReader.loadData(this, "countries.geo.json");
-		countryMarkers = MapUtils.createSimpleMarkers(countries);
+		countries = GeoJSONReader.loadData(this, "countries.geo.json"); //shapefeatures object
+		
+		countryMarkers = MapUtils.createSimpleMarkers(countries);	//SimplePolygonMarker
 		map.addMarkers(countryMarkers);
 
 		// Country markers are shaded according to life expectancy (only once)
@@ -84,6 +88,7 @@ public class LifeExpectancy extends PApplet {
 			String[] columns = row.split(",");
 			if (columns.length == 6 && !columns[5].equals("..")) {
 				lifeExpMap.put(columns[4], Float.parseFloat(columns[5]));
+				//println("country name " + columns[4] + " life exp: " + columns[5] );
 			}
 		}
 

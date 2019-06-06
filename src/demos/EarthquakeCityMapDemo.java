@@ -17,8 +17,7 @@ import processing.core.PApplet;
 
 /**
  * EarthquakeCityMapDemo An application with an interactive map displaying
- * earthquake data. Author: UC San Diego Intermediate Software Development MOOC
- * team
+ * earthquake data. f
  * 
  * @author Star Dust
  * Date: May 17, 2019
@@ -58,7 +57,7 @@ public class EarthquakeCityMapDemo extends PApplet {
 		// map = new UnfoldingMap(this, 200, 50, 650, 600, new
 		// MBTilesMapProvider(mbTilesString));
 
-		map.zoomToLevel(1);
+		map.zoomToLevel(2);
 		MapUtils.createDefaultEventDispatcher(this, map);
 
 		/* For demo purposes */
