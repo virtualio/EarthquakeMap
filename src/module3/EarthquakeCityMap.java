@@ -39,7 +39,6 @@ public class EarthquakeCityMap extends PApplet {
 	// Less than this threshold is a minor earthquake
 	public static final float THRESHOLD_LIGHT = 4;
 
-	
 	public static int  SIZE_SMALL = 5;
 	public static int SIZE_MEDIUM = 10;
 	public static int SIZE_LARGE = 15;
@@ -93,7 +92,7 @@ public class EarthquakeCityMap extends PApplet {
 	    
 	    // Add the markers to the map so that they are displayed
 	    map.addMarkers(markers);
-	    addKey();
+	    
 	}
 		
 	/* createMarker: A suggested helper method that takes in an earthquake 
@@ -130,13 +129,13 @@ public class EarthquakeCityMap extends PApplet {
 	    // above if you want to change what you mean by "moderate" and "light")
 	    if (mag <= THRESHOLD_LIGHT){
 	    	marker.setColor(BLUE);
-	    	marker.setRadius(5);
+	    	marker.setRadius(SIZE_SMALL);
 	    }else if(mag < THRESHOLD_MODERATE){
 	    	marker.setColor(YELLOW);
-	    	marker.setRadius(10);
+	    	marker.setRadius(SIZE_MEDIUM);
 	    }else{
 	    	marker.setColor(RED);
-	    	marker.setRadius(15);
+	    	marker.setRadius(SIZE_LARGE);
 	    }
 	    
 	    // Finally return the marker
