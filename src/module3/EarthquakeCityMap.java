@@ -72,10 +72,10 @@ public class EarthquakeCityMap extends PApplet {
 		
 	    map.zoomToLevel(2);
 	    MapUtils.createDefaultEventDispatcher(this, map);	
-			
+		
 	    // The List you will populate with new SimplePointMarkers
 	    List<Marker> markers = new ArrayList<Marker>();
-
+	    
 	    //Use provided parser to collect properties for each earthquake
 	    //PointFeatures have a getLocation method
 	    List<PointFeature> earthquakes = ParseFeed.parseEarthquake(this, earthquakesURL);

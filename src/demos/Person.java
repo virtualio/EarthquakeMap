@@ -22,6 +22,10 @@ public class Person {
 	public String toString() {
 		return name;
 	}
+	
+	public int getID(){
+		return 0;			
+	}
 
 	public void status(int hr) {
 		if (this.isAsleep(hr))

@@ -30,10 +30,15 @@ public class LandQuakeMarker extends EarthquakeMarker {
 		// class to indicate the depth of the earthquake.
 		// Simply draw a centered circle.
 		
-		// HINT: Notice the radius variable in the EarthquakeMarker class
-		// and how it is set in the EarthquakeMarker constructor
 		
-		// TODO: Implement this method
+		float magnitude = getMagnitude();
+		
+		if (magnitude < THRESHOLD_LIGHT )
+			pg.ellipse(x, y, SIZE_LIGHT,SIZE_LIGHT);
+		else if ( magnitude >= THRESHOLD_LIGHT && magnitude <= THRESHOLD_MODERATE )
+			pg.ellipse(x, y, SIZE_MODERATE,SIZE_MODERATE);
+		else 
+			pg.ellipse(x, y, SIZE_LARGE,SIZE_LARGE);
 		
 	}
 	

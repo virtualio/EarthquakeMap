@@ -32,17 +32,23 @@ public abstract class EarthquakeMarker extends SimplePointMarker
 	/** Greater than or equal to this threshold is a light earthquake */
 	public static final float THRESHOLD_LIGHT = 4;
 
+	public static final float SIZE_LIGHT = 10;
+	public static final float SIZE_MODERATE = 15;
+	public static final float SIZE_LARGE = 20;
+
+	public static final float SIZE_X = 8;
+
+	
 	/** Greater than or equal to this threshold is an intermediate depth */
 	public static final float THRESHOLD_INTERMEDIATE = 70;
 	/** Greater than or equal to this threshold is a deep depth */
 	public static final float THRESHOLD_DEEP = 300;
 
-	// ADD constants for colors
 
 	
 	// abstract method implemented in derived classes
 	public abstract void drawEarthquake(PGraphics pg, float x, float y);
-		
+	
 	
 	// constructor
 	public EarthquakeMarker (PointFeature feature) 
@@ -61,15 +67,20 @@ public abstract class EarthquakeMarker extends SimplePointMarker
 	public void draw(PGraphics pg, float x, float y) {
 		// save previous styling
 		pg.pushStyle();
-			
+
 		// determine color of marker from depth
 		colorDetermine(pg);
 		
 		// call abstract method implemented in child class to draw marker shape
 		drawEarthquake(pg, x, y);
 		
-		// OPTIONAL TODO: draw X over marker if within past day		
-		
+		// TODO: Add try-Catch
+		if (properties.get("age").toString().equals("Past Day")){
+//			System.out.println(properties.get("age"));
+			pg.color(0,0,0);
+			pg.line(x-SIZE_X , y- SIZE_X , x+SIZE_X , y+SIZE_X );
+			pg.line(x-SIZE_X , y+SIZE_X , x+SIZE_X , y-SIZE_X );
+		}
 		// reset to previous styling
 		pg.popStyle();
 		
@@ -81,7 +92,15 @@ public abstract class EarthquakeMarker extends SimplePointMarker
 	// But this is up to you, of course.
 	// You might find the getters below helpful.
 	private void colorDetermine(PGraphics pg) {
-		//TODO: Implement this method
+		float depth= getDepth();
+		
+		if (depth > 0 && depth < THRESHOLD_INTERMEDIATE )
+			pg.fill(255, 255, 0);
+		else if ( depth >= THRESHOLD_INTERMEDIATE && depth <= THRESHOLD_DEEP )
+			pg.fill(0, 0, 255);
+		else if ( depth > THRESHOLD_DEEP && depth <= 700)
+			pg.fill(255, 0, 0);
+		
 	}
 	
 	

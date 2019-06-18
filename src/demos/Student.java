@@ -17,10 +17,16 @@ public class Student extends Person {
 	{
 		return 2 < hr && 8 > hr;
 	}
+	
+	public int getID(){
+		return 1;		
+		
+	}
 
 	public static void main(String[] args) {
 		Person p;
 		p = new Student("Sally");
+		System.out.println(p.getID());
 		p.status(1);
 	}
 }
