@@ -12,6 +12,7 @@ import de.fhpotsdam.unfolding.marker.AbstractShapeMarker;
 import de.fhpotsdam.unfolding.marker.Marker;
 import de.fhpotsdam.unfolding.marker.MultiMarker;
 import de.fhpotsdam.unfolding.providers.Google;
+import de.fhpotsdam.unfolding.providers.Microsoft;
 import de.fhpotsdam.unfolding.providers.MBTilesMapProvider;
 import de.fhpotsdam.unfolding.utils.MapUtils;
 import parsing.ParseFeed;
@@ -58,7 +59,6 @@ public class EarthquakeCityMap extends PApplet {
 	// A List of country markers
 	private List<Marker> countryMarkers;
 	
-	// NEW IN MODULE 5
 	private CommonMarker lastSelected;
 	private CommonMarker lastClicked;
 	
@@ -70,7 +70,7 @@ public class EarthquakeCityMap extends PApplet {
 		    earthquakesURL = "2.5_week.atom";  // The same feed, but saved August 7, 2015
 		}
 		else {
-			map = new UnfoldingMap(this, 200, 50, 650, 600, new Google.GoogleMapProvider());
+			map = new UnfoldingMap(this, 200, 50, 650, 600, new Microsoft.AerialProvider());
 			// IF YOU WANT TO TEST WITH A LOCAL FILE, uncomment the next line
 		    //earthquakesURL = "2.5_week.atom";
 		}
@@ -105,7 +105,7 @@ public class EarthquakeCityMap extends PApplet {
 	    }
 
 	    // could be used for debugging
-	    printQuakes();
+	    //printQuakes();
 	 		
 	    // (3) Add markers to map
 	    //     NOTE: Country markers are not added to the map.  They are used
@@ -145,24 +145,118 @@ public class EarthquakeCityMap extends PApplet {
 	// 
 	private void selectMarkerIfHover(List<Marker> markers)
 	{
-		// TODO: Implement this method
+		for (Marker m : markers){
+			if (m.isInside(map, mouseX, mouseY) && lastSelected == null){
+/*				if (m.getClass() == LandQuakeMarker.class || m.getClass() == OceanQuakeMarker.class)
+					lastSelected = (EarthquakeMarker)m;
+				else
+					lastSelected = (CityMarker)m;
+	*/
+				lastSelected = (CommonMarker)m;
+				lastSelected.setSelected(true);
+				return;
+			}
+		}
 	}
 	
 	/** The event handler for mouse clicks
 	 * It will display an earthquake and its threat circle of cities
 	 * Or if a city is clicked, it will display all the earthquakes 
 	 * where the city is in the threat circle
+	 * TODO: to update this with optimisation
 	 */
 	@Override
 	public void mouseClicked()
 	{
-		// TODO: Implement this method
-		// Hint: You probably want a helper method or two to keep this code
-		// from getting too long/disorganized
+		// if it was clicked previously then show markers
+		// otherwise check if it is a marker which clicked and respond properly
+		if (lastClicked != null ){
+			lastClicked.setClicked(false);
+			unhideMarkers();
+			lastClicked = null;
+		}
+		else{
+		lastClicked = isitMarker();
+		if (lastClicked != null)
+			threatCircleMarkersUpdate();
+				
+		}}
+	
+	/** checks if current cursor in a mark point
+	 * if yes the set lastClicked to that point
+	 * else return null 
+	 * */
+	private CommonMarker isitMarker(){
+		CommonMarker common = null;
+		
+		for (Marker quake: quakeMarkers){
+			if (quake.isInside(map, mouseX, mouseY) && lastClicked == null){
+				lastClicked = (CommonMarker)quake;
+				common = (CommonMarker)quake;
+				return common;
+			}	
+		}		
+		for (Marker city: cityMarkers){
+			if (city.isInside(map, mouseX, mouseY) && lastClicked == null){
+				lastClicked = (CommonMarker)city;
+				common = (CommonMarker)city;
+				return common;
+			}	
+		}		
+		return common;
+		
+	}
+
+	
+	/** updating markers in the map
+	 * if the marker is a city type then hide all 
+	 * other cities and keep quakes that the threat 
+	 * circle can reach that city
+	 * Otherwise it is a Eathquake marker then:
+	 * show only cities who affected by this marker*/
+	private void threatCircleMarkersUpdate(){
+		
+		lastClicked.setClicked(true);
+		lastClicked.setHidden(false);
+
+		if (lastClicked.getClass() == CityMarker.class){
+			
+			// it is city marker
+			for (Marker city: cityMarkers){
+				if (((CommonMarker)city).getClicked() == false)
+					((CommonMarker)city).setHidden(true);
+			
+			}
+			for (Marker quake: quakeMarkers){
+				if (lastClicked.getDistanceTo(quake.getLocation()) <= ((EarthquakeMarker)quake).threatCircle())
+					quake.setHidden(false);
+				else
+					quake.setHidden(true);
+			}
+			return;
+		}
+		
+		
+		// it is earthquake marker
+		for (Marker city: cityMarkers){
+			// if the city in the threat circle then we will show it
+			if (lastClicked.getDistanceTo(city.getLocation()) <= ((EarthquakeMarker)lastClicked).threatCircle()){
+				city.setHidden(false);
+		}else
+				city.setHidden(true);
+		}
+		
+		for (Marker quake: quakeMarkers){
+			if (((CommonMarker)quake).getClicked() == false)
+				((CommonMarker)quake).setHidden(true);
+		
+		}
+		
+		
 	}
 	
-	
-	// loop over and unhide all markers
+	/** unhiding all markers
+	 */
 	private void unhideMarkers() {
 		for(Marker marker : quakeMarkers) {
 			marker.setHidden(false);

@@ -35,6 +35,8 @@ public abstract class EarthquakeMarker extends CommonMarker
 	/** Greater than or equal to this threshold is a deep depth */
 	public static final float THRESHOLD_DEEP = 300;
 
+	public static final float TEXT_OFFSET= 4;
+
 	// ADD constants for colors if you want
 
 	
@@ -53,14 +55,14 @@ public abstract class EarthquakeMarker extends CommonMarker
 		setProperties(properties);
 		this.radius = 1.75f*getMagnitude();
 	}
-	
+
 
 	// calls abstract method drawEarthquake and then checks age and draws X if needed
 	@Override
 	public void drawMarker(PGraphics pg, float x, float y) {
 		// save previous styling
 		pg.pushStyle();
-			
+	
 		// determine color of marker from depth
 		colorDetermine(pg);
 		
@@ -93,7 +95,8 @@ public abstract class EarthquakeMarker extends CommonMarker
 	@Override
 	public void showTitle(PGraphics pg, float x, float y)
 	{
-		// TODO: Implement this method
+		pg.text(this.getTitle() + "-" + this.getMagnitude(), x - 2*radius, y + 2*radius + TEXT_OFFSET);
+
 		
 	}
 
