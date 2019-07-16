@@ -44,8 +44,8 @@ public class EarthquakeCityMap extends PApplet {
 	
 
 	//feed with magnitude 2.5+ Earthquakes
-	private String earthquakesURL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.atom";
-	
+	//private String earthquakesURL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.atom";
+	private String earthquakesURL = "test2.atom";
 	// The files containing city names and info and country names and info
 	private String cityFile = "city-data.json";
 	private String countryFile = "countries.geo.json";
@@ -116,7 +116,7 @@ public class EarthquakeCityMap extends PApplet {
 	    }
 
 	    // could be used for debugging
-	    printQuakes();
+	    //printQuakes();
 	 		
 	    // (3) Add markers to map
 	    //     NOTE: Country markers are not added to the map.  They are used
@@ -124,6 +124,7 @@ public class EarthquakeCityMap extends PApplet {
 	    map.addMarkers(quakeMarkers);
 	    map.addMarkers(cityMarkers);
 	    
+	    sortAndPrint(2222);
 	    
 	}  // End setup
 	
@@ -136,9 +137,51 @@ public class EarthquakeCityMap extends PApplet {
 	}
 	
 	
-	// TODO: Add the method:
-	//   private void sortAndPrint(int numToPrint)
-	// and then call that method from setUp
+	private void sortAndPrint(int numToPrint){
+		
+		int fullMode = quakeMarkers.size();
+		int mode = 0;
+		Object[] allQuakes = quakeMarkers.toArray();
+		
+		Arrays.sort(allQuakes);
+		if (numToPrint > 0 ){
+			mode = ( numToPrint >= quakeMarkers.size() ? fullMode : numToPrint );
+			
+			for (int i=0; i<mode; i++)
+				System.out.println("[" + i + "] " + allQuakes[i].toString());
+				
+		}
+	}
+		
+	/*
+	/** Sort an array of ints using Selection Sort */
+/*	private static void selectionSort(Object[] markers) {
+		int minI;
+
+		for (int i = 0; i < markers.length - 1; i++) {
+			minI = i;
+
+			for (int j = i; j < markers.length; j++) {
+				if (markers[j].compareTo(markers[minI])) {
+					minI = j;
+				}
+			}
+
+			swap(markers, minI, i);
+		}
+
+	}
+
+	private static void swap(Object[] vals, int ind1, int ind2) {
+		Object temp = vals[ind1];
+		vals[ind1] = vals[ind2];
+		vals[ind2] = temp;
+	}
+
+*/	
+	
+
+	
 	
 	/** Event handler that gets called automatically when the 
 	 * mouse moves.
