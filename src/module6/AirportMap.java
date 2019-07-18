@@ -10,6 +10,7 @@ import de.fhpotsdam.unfolding.data.ShapeFeature;
 import de.fhpotsdam.unfolding.marker.Marker;
 import de.fhpotsdam.unfolding.marker.SimpleLinesMarker;
 import de.fhpotsdam.unfolding.marker.SimplePointMarker;
+import de.fhpotsdam.unfolding.providers.Google;
 import de.fhpotsdam.unfolding.utils.MapUtils;
 import de.fhpotsdam.unfolding.geo.Location;
 import parsing.ParseFeed;
@@ -17,7 +18,6 @@ import processing.core.PApplet;
 
 /** An applet that shows airports (and routes)
  * on a world map.  
- * @author Adam Setters and the UC San Diego Intermediate Software Development
  * @author Star Dust
  * Date: May 17, 2019 *
  */
@@ -32,7 +32,8 @@ public class AirportMap extends PApplet {
 		size(800,600, OPENGL);
 		
 		// setting up map and default events
-		map = new UnfoldingMap(this, 50, 50, 750, 550);
+		//map = new UnfoldingMap(this, 50, 50, 750, 550);
+		map = new UnfoldingMap(this, 200, 50, 650, 600, new Google.GoogleMapProvider());
 		MapUtils.createDefaultEventDispatcher(this, map);
 		
 		// get features from airport data
@@ -45,8 +46,8 @@ public class AirportMap extends PApplet {
 		// create markers from features
 		for(PointFeature feature : features) {
 			AirportMarker m = new AirportMarker(feature);
-	
-			m.setRadius(5);
+
+			m.setRadius(3);
 			airportList.add(m);
 			
 			// put airport in hashmap with OpenFlights unique id for key
@@ -64,24 +65,23 @@ public class AirportMap extends PApplet {
 			int source = Integer.parseInt((String)route.getProperty("source"));
 			int dest = Integer.parseInt((String)route.getProperty("destination"));
 			
-			// get locations for airports on route
+			// get locations for airports on route - it enter if statement always
 			if(airports.containsKey(source) && airports.containsKey(dest)) {
 				route.addLocation(airports.get(source));
 				route.addLocation(airports.get(dest));
 			}
-			
 			SimpleLinesMarker sl = new SimpleLinesMarker(route.getLocations(), route.getProperties());
 		
 			System.out.println(sl.getProperties());
 			
 			//UNCOMMENT IF YOU WANT TO SEE ALL ROUTES
-			//routeList.add(sl);
+			routeList.add(sl);
 		}
 		
 		
 		
 		//UNCOMMENT IF YOU WANT TO SEE ALL ROUTES
-		//map.addMarkers(routeList);
+		map.addMarkers(routeList);
 		
 		map.addMarkers(airportList);
 		

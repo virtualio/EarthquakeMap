@@ -124,7 +124,7 @@ public class EarthquakeCityMap extends PApplet {
 	    map.addMarkers(quakeMarkers);
 	    map.addMarkers(cityMarkers);
 	    
-	    sortAndPrint(2222);
+	    sortAndPrint(10);
 	    
 	}  // End setup
 	
@@ -153,36 +153,7 @@ public class EarthquakeCityMap extends PApplet {
 		}
 	}
 		
-	/*
-	/** Sort an array of ints using Selection Sort */
-/*	private static void selectionSort(Object[] markers) {
-		int minI;
 
-		for (int i = 0; i < markers.length - 1; i++) {
-			minI = i;
-
-			for (int j = i; j < markers.length; j++) {
-				if (markers[j].compareTo(markers[minI])) {
-					minI = j;
-				}
-			}
-
-			swap(markers, minI, i);
-		}
-
-	}
-
-	private static void swap(Object[] vals, int ind1, int ind2) {
-		Object temp = vals[ind1];
-		vals[ind1] = vals[ind2];
-		vals[ind2] = temp;
-	}
-
-*/	
-	
-
-	
-	
 	/** Event handler that gets called automatically when the 
 	 * mouse moves.
 	 */

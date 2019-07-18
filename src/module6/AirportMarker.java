@@ -10,7 +10,6 @@ import processing.core.PGraphics;
 /** 
  * A class to represent AirportMarkers on a world map.
  *   
- * @author Adam Setters and the UC San Diego Intermediate Software Development
  * @author Star Dust
  * Date: May 17, 2019 *
  */
