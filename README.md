@@ -10,26 +10,39 @@ Included with this app an interactive map for:
 --------------
 Part of refreshing my programming skills in java I took online course. in this course implemented interactive earthquake map with a basic GUI and markers. using the same design of earth quake map for Airport connections and life expectancy map.
 
+
 ## Covered topics while learning
 --------------------------------
--- Papplet in java
--- object oriented design to solve our problem and sustain readable, non repeated code.
--- data representation in object and using the power of polymorphysim.
--- using sorted data to optimise interactivity with the map and code execution.
--- exposed to build in libraries in java to represent marks in map.
--- reading json/csv files and parse it.
--- data mining from online source of earth quake.
--- introduced to map providers such as google/microsoft.
--- introduced to [processing[2]] libraries and thier use.
--- learning the mindset behind choosing which type of data for our problem or which sort algorithm fit our problem.
--- handling heavy complex data for visualization and making sure function have the shortest optimised run time complexity.
--- 
+- Papplet in java
+
+- object oriented design to solve our problem and sustain readable, non repeated code.
+
+- data representation in object and using the power of polymorphysim.
+
+- using sorted data to optimise interactivity with the map and code execution.
+
+- exposed to build in libraries in java to represent marks in map.
+
+- reading json/csv files and parse it.
+
+- data mining from online source of earth quake.
+
+- introduced to map providers such as google/microsoft.
+
+- introduced to [processing][2] libraries and thier use.
+
+- learning the mindset behind choosing which type of data for our problem or which sort algorithm fit our problem.
+
+- handling heavy complex data for visualization and making sure function have the shortest optimised run time complexity.
+ 
+
 
 
 ## INSTALLATION
 ---------------
 Import this folder in Eclipse ('File' -> 'Import' -> 'Existing Projects into
 Workspace', Select this folder, 'Finish')
+
 
 
 ## MANUAL INSTALLATION
@@ -43,9 +56,15 @@ If the import does not work follow the steps below.
 - Add data/ as src
 
 
+
 ## TROUBLE SHOOTING
 -------------------
 Switch Java Compiler to 1.6 if you get VM problems. (Processing should work with Java 1.6, and 1.7)
+
+
+
+## Screen img 
+--------------
 
 
 
