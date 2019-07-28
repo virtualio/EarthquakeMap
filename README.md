@@ -28,7 +28,9 @@ Part of refreshing my programming skills in java I took online course. in this c
 
 - reading json/csv files and parse it.
 
-- data mining from online source of earth quake.
+- data mining from online source of earth quake. 
+
+- fetching online earthquake data and plot it live.
 
 - introduced to map providers such as google/microsoft.
 
