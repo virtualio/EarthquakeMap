@@ -96,6 +96,8 @@ life expectancy highlighted
 ![](map/7.jpg)
 
 
+#zurich #zürich #winterthur #bern #schweiz #switzerland
+
 
 [1]: https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-128.png
 [2]: https://processing.org/reference/
