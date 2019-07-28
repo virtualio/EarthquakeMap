@@ -6,6 +6,8 @@ Included with this app an interactive map for:
                     * Airports connection in the world.
 
 
+
+
 ## Description
 --------------
 Part of refreshing my programming skills in java I took online course. in this course implemented interactive earthquake map with a basic GUI and markers. using the same design of earth quake map for Airport connections and life expectancy map.
@@ -63,9 +65,27 @@ Switch Java Compiler to 1.6 if you get VM problems. (Processing should work with
 
 
 
-## Screen img 
---------------
+## Screen images 
+----------------
 
+earth quake
+![](map/2.jpg)
+
+![](map/1.jpg)
+
+earthquake in japan area
+![](map/3.jpg)
+
+airport connection map
+![](map/4.jpg)
+
+![](map/5.jpg)
+
+life expectancy map
+![](map/6.jpg)
+
+life expectancy highlighted
+![](map/7.jpg)
 
 
 
