@@ -20,17 +20,17 @@ Part of refreshing my programming skills in java I took online course. in this c
 
 - object oriented design to solve our problem and sustain readable, non repeated code.
 
-- data representation in object and using the power of polymorphysim.
+- data representation in object oriented and using the power of polymorphysim.
 
 - using sorted data to optimise interactivity with the map and code execution.
 
-- exposed to build in libraries in java to represent marks in map.
+- exposed to build-in libraries in java to represent marks in map.
 
 - reading json/csv files and parse it.
 
-- data mining from online source of earth quake. 
+- data mining from online database of earth quakes. 
 
-- fetching online earthquake data and plot it live.
+- fetching lice earthquake data and plot it live.
 
 - introduced to map providers such as google/microsoft.
 
