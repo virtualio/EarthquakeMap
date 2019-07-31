@@ -1,4 +1,4 @@
-# earth quake/life expectance interactive map [![Earthquake][1]][2]
+# Earth quake & life expectance interactive map [![Earthquake][1]][2]
 
 Earthquake is an application with an interactive map displaying earthquake data.
 
