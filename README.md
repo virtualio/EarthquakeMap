@@ -11,7 +11,7 @@ Included with this app an interactive map for:
 
 ## Description
 --------------
-Part of refreshing my programming skills in java I took online course. in this course implemented interactive earthquake map with a basic GUI and markers. using the same design of earth quake map for Airport connections and life expectancy map.
+implemented interactive earthquake map with a basic GUI and markers. using the same design of earth quake map for Airport connections and life expectancy map.
 
 
 ## Covered topics while learning
