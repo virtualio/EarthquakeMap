@@ -70,7 +70,7 @@ Switch Java Compiler to 1.6 if you get VM problems. (Processing should work with
 
 ## Contributing
 ---------------
-Always welcome. In particular, there is a dire need for tests and documentation
+Always welcoming new ideas or if anyone would like to add unit-test and documentation
 email me for any Ideas related to GIS, map visualising ...
 
 
