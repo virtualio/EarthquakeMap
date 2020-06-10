@@ -28,15 +28,13 @@ implemented interactive earthquake map with a basic GUI and markers. using the s
 
 - reading json/csv files and parse it.
 
-- data mining from online database of earth quakes. 
-
-- fetching lice earthquake data and plot it live.
+- data mining/fetching from online database of earth quakes. 
 
 - introduced to map providers such as google/microsoft.
 
-- introduced to [processing][2] libraries and thier use.
+- introduced to [processing][2] libraries and their practical use.
 
-- learning the mindset behind choosing which type of data for our problem or which sort algorithm fit our problem.
+- developing the mindset behind choosing which type of data for our problem or which sort algorithm fit our problem.
 
 - handling heavy complex data for visualization and making sure function have the shortest optimised run time complexity.
  
