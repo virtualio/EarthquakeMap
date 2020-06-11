@@ -1,0 +1,200 @@
+                           ,-------.                                                                       ,-----------------.                    
+                           |PApplet|                                                                       |simplePointMarker|                    
+                           |-------|                                                                       |-----------------|                    
+                           |-------|                                                                       |-----------------|                    
+                           `-------'                                                                       `-----------------'                    
+                               |                                                                                    |                             
+                               |                                                                                    |                             
+,-------------------------------------------------------------.                                                     |                             
+|EarthquakeCityMap                                            |                                                     |                             
+|-------------------------------------------------------------|                                                     |                             
+|-final long serialVersionUID                                 |                                                     |                             
+|-final boolean offlin                                        |                                                     |                             
+|+String mbTilesString                                        |                                                     |                             
+|-String earthquakesURL                                       |                                                     |                             
+|-String cityFile                                             |                                                     |                             
+|-String countryFile                                          |                            ,------------------------------------------------.     
+|-UnfoldingMap map                                            |                            |CommonMarker                                    |     
+|-List<Marker> cityMarkers                                    |                            |------------------------------------------------|     
+|-List<Marker> quakeMarkers                                   |                            |#boolean clicked                                |     
+|-List<Marker> countryMarkers                                 |  ,----------.              |------------------------------------------------|     
+|-CommonMarker lastSelected                                   |  |Comparable|              |+CommonMarker(Location)                         |     
+|-CommonMarker lastClicked                                    |  |----------|              |+CommonMarker(Location, properties)             |     
+|-------------------------------------------------------------|  |----------|              |+boolean getClicked()                           |     
+|+void setup()                                                |  `----------'              |+void setClicked(boolean)                       |     
+|+void draw()                                                 |                            |+void draw(PGraphics , float x, float y)        |     
+|-void sortAndPrint(int numToPrint)                           |                            |+void drawMarker(PGraphics pg, float x, float y)|     
+|+void mouseMoved()                                           |                            |+void showTitle(PGraphics pg, float x, float y) |     
+|-void selectMarkerIfHover(List<Marker> markers)              |                            `------------------------------------------------'     
+|+void mouseClicked()                                         |                                                                                   
+|-void checkCitiesForClick()                                  |                                                                                   
+|-void checkEarthquakesForClick()                             |                                                                                   
+|-void unhideMarkers()                                        |                                                                                   
+|-void addKey()                                               |                                                                                   
+|-boolean isLand(PointFeature earthquake)                     |                                                                                   
+|-void printQuakes()                                          |                                                                                   
+|-boolean isInCountry(PointFeature earthquake, Marker country)|                                                                                   
+`-------------------------------------------------------------'                                                                                   
+                                                                                                                                                  
+                                       ,-----------------------------------------------------.                                                    
+                                       |EarthquakeMarker                                     |                                                    
+                                       |-----------------------------------------------------|                                                    
+                                       |#boolean isOnLand                                    |                                                    
+                                       |#float radius;                                       |                                                    
+                                       |#final float kmPerMile                               |                                                    
+                                       |+final float THRESHOLD_MODERATE                      |  ,------------------------------------------------.
+                                       |+final float THRESHOLD_LIGHT                         |  |CityMarker                                      |
+                                       |+final float THRESHOLD_INTERMEDIATE                  |  |------------------------------------------------|
+                                       |+final float THRESHOLD_DEEP                          |  |+int TRI_SIZE                                   |
+                                       |-----------------------------------------------------|  |------------------------------------------------|
+                                       |+EarthquakeMarker (PointFeature feature)             |  |+CityMarker(Location location)                  |
+                                       |+void drawEarthquake(PGraphics pg, float x, float y);|  |+CityMarker(Feature city)                       |
+                                       |+int compareTo(EarthquakeMarker marker)              |  |+void drawMarker(PGraphics pg, float x, float y)|
+                                       |+void drawMarker(PGraphics pg, float x, float y)     |  |+void showTitle(PGraphics pg, float x, float y) |
+                                       |+void showTitle(PGraphics pg, float x, float y)      |  |-String getCity()                               |
+                                       |+double threatCircle()                               |  |-String getCountry()                            |
+                                       |-void colorDetermine(PGraphics pg)                   |  |-float getPopulation()                          |
+                                       |+String toString()                                   |  `------------------------------------------------'
+                                       |+float getMagnitude()                                |                                                    
+                                       |+float getDepth()                                    |                                                    
+                                       |+String getTitle()                                   |                                                    
+                                       |+float getRadius()                                   |                                                    
+                                       |+boolean isOnLand()                                  |                                                    
+                                       `-----------------------------------------------------'                                                    
+                                                                                                                                                  
+                                                                                                                                                  
+           ,----------------------------------------------------.  ,----------------------------------------------------.                         
+           |LandQuakeMarker                                     |  |OceanQuakeMarker                                    |                         
+           |----------------------------------------------------|  |----------------------------------------------------|                         
+           |----------------------------------------------------|  |----------------------------------------------------|                         
+           |+LandQuakeMarker(PointFeature quake)                |  |+OceanQuakeMarker(PointFeature quake)               |                         
+           |+void drawEarthquake(PGraphics pg, float x, float y)|  |+void drawEarthquake(PGraphics pg, float x, float y)|                         
+           |+String getCountry()                                |  `----------------------------------------------------'                         
+           `----------------------------------------------------'                                                                                 
+		   
+		   
+		   
+		   
+		   
+@startuml
+
+title UML Class diagram - Earth Quake
+
+
+abstract class CommonMarker extends unfolding.marker.simplePointMarker {
+	# boolean clicked
+	
+	+ CommonMarker(Location)
+    + CommonMarker(Location, properties) 
+    + boolean getClicked()
+    + void setClicked(boolean)
+    + void draw(PGraphics , float x, float y)
+	+ {abstract} void drawMarker(PGraphics pg, float x, float y)
+	+ {abstract} void showTitle(PGraphics pg, float x, float y)
+
+}
+EarthquakeCityMap o-- EarthquakeMarker
+
+
+abstract class EarthquakeMarker  implements Comparable
+abstract class EarthquakeMarker extends CommonMarker {
+    # boolean isOnLand
+    # float radius;
+	# {static} final float kmPerMile
+	+ {static} final float THRESHOLD_MODERATE
+	+ {static} final float THRESHOLD_LIGHT
+    + {static} final float THRESHOLD_INTERMEDIATE
+	+ {static} final float THRESHOLD_DEEP
+
+	+ EarthquakeMarker (PointFeature feature) 
+	+ {abstract} void drawEarthquake(PGraphics pg, float x, float y);
+    + int compareTo(EarthquakeMarker marker)
+	+ void drawMarker(PGraphics pg, float x, float y)
+    + void showTitle(PGraphics pg, float x, float y)
+    + double threatCircle() 
+    - void colorDetermine(PGraphics pg)
+    + String toString()
+    + float getMagnitude()
+    + float getDepth() 
+    + String getTitle()
+    + float getRadius()
+    + boolean isOnLand()
+}
+
+
+
+class LandQuakeMarker extends EarthquakeMarker {
+
+    + LandQuakeMarker(PointFeature quake)    
+    + void drawEarthquake(PGraphics pg, float x, float y)
+    + String getCountry()
+
+}
+
+
+
+
+
+class OceanQuakeMarker extends EarthquakeMarker {
+
+    + OceanQuakeMarker(PointFeature quake)
+    + void drawEarthquake(PGraphics pg, float x, float y)
+}
+
+
+
+
+
+
+
+
+class CityMarker extends CommonMarker {
+    + {static} int TRI_SIZE 
+    + CityMarker(Location location)
+    + CityMarker(Feature city)
+    + void drawMarker(PGraphics pg, float x, float y)
+    + void showTitle(PGraphics pg, float x, float y)
+    - String getCity()
+    - String getCountry()
+    - float getPopulation()
+    
+}
+
+
+
+
+class EarthquakeCityMap extends PApplet {
+
+    - {static} final long serialVersionUID
+	- {static} final boolean offlin
+	+ {static} String mbTilesString 
+	- String earthquakesURL 
+	- String cityFile 
+	- String countryFile
+	- UnfoldingMap map
+	- List<Marker> cityMarkers 
+	- List<Marker> quakeMarkers
+	- List<Marker> countryMarkers
+	- CommonMarker lastSelected
+	- CommonMarker lastClicked
+	
+	+ void setup()
+	+ void draw()
+	- void sortAndPrint(int numToPrint)
+	+ void mouseMoved()
+	- void selectMarkerIfHover(List<Marker> markers)
+	+ void mouseClicked()
+	- void checkCitiesForClick()
+	- void checkEarthquakesForClick()
+	- void unhideMarkers() 
+	- void addKey()
+	- boolean isLand(PointFeature earthquake)
+	- void printQuakes()
+	- boolean isInCountry(PointFeature earthquake, Marker country) 
+	
+
+}
+
+
+
+@enduml
