@@ -1,9 +1,6 @@
 package demos;
 
 /**
- * A class to represent Airport data. Used in module 6 of the UC San Diego MOOC
- * Object Oriented Programming in Java
- * 
  * @author Star Dust
  * Date: May 17, 2019
  *

@@ -1,10 +1,6 @@
 package demos;
 
 /**
- * A class to illustrate class design and use. Used in module 2 of the UC San
- * Diego MOOC Object Oriented Programming in Java
- * 
- * @author UC San Diego Intermediate Software Development MOOC team
  * @author Star Dust
  * Date: May 17, 2019
  *

@@ -1,4 +1,4 @@
-package module6;
+package impl;
 
 import processing.core.PApplet;
 import processing.core.PConstants;

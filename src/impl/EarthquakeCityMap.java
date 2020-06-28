@@ -1,4 +1,4 @@
-package module6;
+package impl;
 
 import java.util.ArrayList;
 import java.util.Arrays;

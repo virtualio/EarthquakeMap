@@ -1,4 +1,4 @@
-package module6;
+package impl;
 
 import de.fhpotsdam.unfolding.data.Feature;
 import de.fhpotsdam.unfolding.data.PointFeature;
