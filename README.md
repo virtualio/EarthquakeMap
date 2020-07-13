@@ -11,10 +11,10 @@ Included with this app an interactive map for:
 
 ## Description
 --------------
-implemented interactive earthquake map with a basic GUI and markers. using the same design of earth quake map for Airport connections and life expectancy map.
+implemented interactive earthquake map with a basic GUI and markers. using the same UML design of earth quake map for Airport connections and life expectancy map.
 
 
-## Covered topics while learning
+## Covered topics 
 --------------------------------
 - Papplet in java
 
@@ -26,11 +26,11 @@ implemented interactive earthquake map with a basic GUI and markers. using the s
 
 - exposed to build-in libraries in java to represent marks in map.
 
-- reading json/csv files and parse it.
+- reading/parsing json/csv data files.
 
-- data mining/fetching from online database of earth quakes. 
+- data fetching from online database of earth quakes. 
 
-- introduced to map providers such as google/microsoft.
+- introduced to map providers such as google/microsoft. (free now but I guess the business model of google to charge programmers in the future)
 
 - introduced to [processing][2] libraries and their practical use.
 
@@ -45,6 +45,7 @@ implemented interactive earthquake map with a basic GUI and markers. using the s
 ---------------
 Import this folder in Eclipse ('File' -> 'Import' -> 'Existing Projects into
 Workspace', Select this folder, 'Finish')
+TODO: bash instruction
 
 
 
@@ -68,7 +69,7 @@ Switch Java Compiler to 1.6 if you get VM problems. (Processing should work with
 
 ## Contributing
 ---------------
-Always welcoming new ideas or if anyone would like to add unit-test and documentation
+Always welcoming new ideas or if anyone would like to add unit-test
 email me for any Ideas related to GIS, map visualising ...
 
 
