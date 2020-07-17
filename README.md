@@ -79,23 +79,21 @@ email me for any Ideas related to GIS, map visualising ...
 ----------------
 
 earth quake
-![](map/2.jpg)
 
-![](map/1.jpg)
-
-earthquake in japan area
-![](map/3.jpg)
+![](https://github.com/virtualio/EarthquakeMap/blob/master/data/earth%20quacke.gif)
 
 airport connection map
+
 ![](map/4.jpg)
 
 ![](map/5.jpg)
 
 life expectancy map
+
 ![](map/6.jpg)
 
 life expectancy highlighted
-![](map/7.jpg)
+![](https://github.com/virtualio/EarthquakeMap/blob/master/data/life%20expectancy.gif)
 
 
 
