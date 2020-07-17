@@ -90,9 +90,6 @@ airport connection map
 
 life expectancy map
 
-![](map/6.jpg)
-
-life expectancy highlighted
 ![](https://github.com/virtualio/EarthquakeMap/blob/master/data/life%20expectancy.gif)
 
 
